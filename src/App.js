@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
 import axios from 'axios';
-import { Button, Modal, TextField, Typography, AppBar, Toolbar, IconButton, Grid } from '@material-ui/core'; 
+import { Button, Modal, TextField, Typography, AppBar, Toolbar, IconButton, Grid, CircularProgress } from '@material-ui/core'; 
 import { makeStyles } from '@material-ui/core/styles'; 
 import AddIcon from '@material-ui/icons/Add';
+
 
 const datadogUrl = 'https://cors-anywhere.herokuapp.com/https://api.us5.datadoghq.com/api/v1/monitor';
 const apiKey = '64a58aa7fb934a333f1050c00a1cc74e';
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   const [apiData, setApiData] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
   const [error, setError] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [formData, setFormData] = useState({});
@@ -40,6 +42,7 @@ function App() {
 
   const fetchData = async () => {
     try {
+      setLoading(true); // Set loading state to true before fetching data
       const response = await axios.get(datadogUrl + '?group_states=alert', {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -48,8 +51,10 @@ function App() {
         },
       });
       setApiData(response.data);
+      setLoading(false); // Set loading state to false after data is fetched
     } catch (error) {
       setError(error);
+      setLoading(false); // Set loading state to false in case of error
     }
   };
 
@@ -93,12 +98,16 @@ function App() {
           <Typography variant="h5" gutterBottom>List of Monitors</Typography> {/* Heading list for the table */}
         </Grid>
         <Grid item xs={12}>
-          <DataTable data={apiData} />
+          {loading ? ( // Show loading indicator if data is being fetched
+            <CircularProgress />
+          ) : (
+            <DataTable data={apiData} />
+          )}
         </Grid>
       </Grid>
       <Modal open={openModal} onClose={handleCloseModal}>
         <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px' }}>
-          <h2>Form Modal</h2>
+          <h2>Add New Monitor</h2>
           <form onSubmit={handleSubmit}>
             <TextField
               label="Message"
