@@ -4,7 +4,7 @@ import { Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material'
 const DataTable = ({ data }) => {
   return (
     <Table>
-      <TableHead>
+      <TableHead style={{ backgroundColor: 'lightblue' }}>
         <TableRow>
           {/* Dynamically render table headers based on your API data structure */}
           <TableCell>S.NO</TableCell>
