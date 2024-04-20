@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Datadog-monitor-dashboard/static/css/main.e6c13ad2.css",
+    "main.js": "/Datadog-monitor-dashboard/static/js/main.db0f49ac.js",
+    "static/js/453.0f77ebdb.chunk.js": "/Datadog-monitor-dashboard/static/js/453.0f77ebdb.chunk.js",
+    "index.html": "/Datadog-monitor-dashboard/index.html",
+    "main.e6c13ad2.css.map": "/Datadog-monitor-dashboard/static/css/main.e6c13ad2.css.map",
+    "main.db0f49ac.js.map": "/Datadog-monitor-dashboard/static/js/main.db0f49ac.js.map",
+    "453.0f77ebdb.chunk.js.map": "/Datadog-monitor-dashboard/static/js/453.0f77ebdb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.db0f49ac.js"
+  ]
+}
