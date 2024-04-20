@@ -1,0 +1,33 @@
+/* Example using Bootstrap's built-in themes */
+body {
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  /* Removed gradient for more options */
+}
+
+.table {
+  color: #333; /* Dark text for table content */
+  /* Use Bootstrap's built-in table styles (optional) */
+  /* border: 1px solid #ddd;
+  border-collapse: collapse; */
+}
+
+.table-striped > tbody > tr:nth-child(odd) {
+  background-color: #e9ecef; /* Lighter background for odd rows */
+}
+
+.footer {
+  background: linear-gradient(to right, #007bff, #428bca); /* Blue footer gradient */
+  color: #fff; /* White text for contrast */
+  padding: 1rem;
+  text-align: center; /* Center footer content */
+}
+
+/* Ensure sufficient contrast for dark text on blue backgrounds */
+.footer {
+  color: #fff;
+  contrast-ratio: 4.5; /* WCAG 2.1 AA requirement for text over background */
+}
